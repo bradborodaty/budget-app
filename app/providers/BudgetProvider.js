@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+import { useLocalStorage } from '../hooks/useLocalStorage';
+
 export const BudgetProviderContext = React.createContext({});
 
 function BudgetProvider(props) {
-  const [data, setData] = useState({});
+  const [data, setData] = useLocalStorage('bdgdata', {});
 
   useEffect(() => {
     let items = {
@@ -28,6 +30,7 @@ function BudgetProvider(props) {
 
   // add new budget item
   const addItem = (name,amount,category) => {
+    console.log(name, amount, category);
     // budget item to add to array
     let newItem = {name,amount,category};
     // take current state of data

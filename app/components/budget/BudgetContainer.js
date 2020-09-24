@@ -15,7 +15,11 @@ function BudgetContainer() {
     if(budgetContext.data.lastUpdated) {
       setData(budgetContext.data);
     }
-  }, [budgetContext.data])
+  }, [budgetContext.data]);
+
+  const addItem = (value) => {
+    budgetContext.addItem('test', 'test', 'test');
+  }
 
   return (
     <div>
@@ -23,6 +27,7 @@ function BudgetContainer() {
         <p>Loading....</p>
       :
       <div>
+        <button onClick={() => addItem()}>click me to add</button>
         <p>This is the BudgetContainer</p>
         <p>This budget was last updated: {data.lastUpdated}</p>
         <ul>
